@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "501087524335",
+    "project_id": "t-nance",
+    "storage_bucket": "t-nance.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501087524335:android:42d2e70a1037d95df8d21a",
+        "android_client_info": {
+          "package_name": "com.example.tnance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBU0IHf9xep7WeiNhY1Tvv1ktmB_MksSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
