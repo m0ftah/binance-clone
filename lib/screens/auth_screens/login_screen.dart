@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tnance/helper/constans.dart';
 import 'package:tnance/main.dart';
 import 'package:tnance/providers/auth_provider.dart';
 import 'package:tnance/screens/auth_screens/regester_screen.dart';
@@ -34,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: base3,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -50,12 +52,16 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   "Login",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w300,
+                      color: seconderycolor),
                 ),
                 InputField(
                   controller: phoneController,
+                  textcolor: Colors.white,
                   hintText: "phone",
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -70,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 InputField(
                   controller: passwordController,
+                  textcolor: Colors.white,
                   hintText: "password",
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -118,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "Login",
                       style: TextStyle(
-                          color: isValidForm ? Colors.blue : Colors.grey),
+                          color: isValidForm ? seconderycolor : Colors.grey),
                     )),
                 TextButton(
                     onPressed: () {
@@ -127,9 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           CupertinoPageRoute(
                               builder: (context) => const RegisterScreen()));
                     },
-                    child: const Text(
+                    child: Text(
                       "Create Account",
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: seconderycolor),
                     ))
               ],
             ),

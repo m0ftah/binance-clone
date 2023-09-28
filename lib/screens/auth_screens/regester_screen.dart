@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tnance/helper/constans.dart';
 import 'package:tnance/main.dart';
 import 'package:tnance/providers/auth_provider.dart';
 import 'package:tnance/widgets/input_feild.dart';
@@ -29,8 +30,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black87),
+        iconTheme: IconThemeData(color: seconderycolor),
       ),
+      backgroundColor: base3,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -54,6 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 InputField(
                   controller: nameController,
+                  textcolor: Colors.white,
                   hintText: "name",
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -68,6 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 InputField(
                   controller: phoneController,
+                  textcolor: Colors.white,
                   hintText: "phone",
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -83,6 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 InputField(
                   obSecure: true,
                   controller: passwordController,
+                  textcolor: Colors.white,
                   hintText: "password",
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -97,6 +102,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 InputField(
                   controller: passwordConfirmationController,
+                  textcolor: Colors.white,
                   hintText: "password confirmation",
                   validator: (value) {
                     if (value!.isEmpty) {

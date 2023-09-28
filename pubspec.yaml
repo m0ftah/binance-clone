@@ -41,6 +41,9 @@ dependencies:
   shimmer:
   shared_preferences:
   firebase_core:
+  fl_chart:
+  image_picker_android:
+  syncfusion_flutter_charts:
 dev_dependencies:
   flutter_test:
     sdk: flutter

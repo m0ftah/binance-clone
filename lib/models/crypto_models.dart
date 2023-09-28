@@ -1,6 +1,3 @@
-// To parse this JSON data, do
-//
-//     final cryptoCurrncyModel = cryptoCurrncyModelFromJson(jsonString);
 
 import 'dart:convert';
 
@@ -16,13 +13,13 @@ class CryptoCurrncyModel {
   String symbol;
   String name;
   String supply;
-  // String maxSupply;
+  String? maxSupply;
   String marketCapUsd;
   String volumeUsd24Hr;
   String priceUsd;
   String changePercent24Hr;
-  String vwap24Hr;
-  String explorer;
+  String? vwap24Hr;
+  String? explorer;
 
   CryptoCurrncyModel({
     required this.id,
@@ -30,13 +27,13 @@ class CryptoCurrncyModel {
     required this.symbol,
     required this.name,
     required this.supply,
-    //  required this.maxSupply,
+    this.maxSupply,
     required this.marketCapUsd,
     required this.volumeUsd24Hr,
     required this.priceUsd,
     required this.changePercent24Hr,
-    required this.vwap24Hr,
-    required this.explorer,
+    this.vwap24Hr,
+    this.explorer,
   });
 
   factory CryptoCurrncyModel.fromJson(Map<String, dynamic> json) =>
@@ -46,7 +43,7 @@ class CryptoCurrncyModel {
         symbol: json["symbol"],
         name: json["name"],
         supply: json["supply"],
-        //  maxSupply: json["maxSupply"],
+        maxSupply: json["maxSupply"],
         marketCapUsd: json["marketCapUsd"],
         volumeUsd24Hr: json["volumeUsd24Hr"],
         priceUsd: json["priceUsd"],
@@ -61,7 +58,7 @@ class CryptoCurrncyModel {
         "symbol": symbol,
         "name": name,
         "supply": supply,
-        //  "maxSupply": maxSupply,
+        "maxSupply": maxSupply,
         "marketCapUsd": marketCapUsd,
         "volumeUsd24Hr": volumeUsd24Hr,
         "priceUsd": priceUsd,

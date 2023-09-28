@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tnance/helper/constans.dart';
+import 'package:tnance/main.dart';
+import 'package:tnance/providers/auth_provider.dart';
 import 'package:tnance/providers/crypto_coin_provider.dart';
-import 'package:tnance/screens/auth_screens/splash_screen.dart';
 import 'package:tnance/widgets/coin_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
+  void initState() {
+    Provider.of<CryptoProvider>(context, listen: false).fetchCoins();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Consumer<CryptoProvider>(builder: (context, cryptoconsumer, _) {
@@ -25,28 +32,32 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
             children: [
               GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                          builder: (context) => const SplashScreen()));
-                },
+                onTap: () {},
                 child: ListTile(
-                  title: const Text("My Profile"),
+                  title: const Text("Contact Us"),
                   trailing: Icon(
-                    Icons.person,
-                    size: 30,
+                    Icons.headphones,
                     color: seconderycolor,
                   ),
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Provider.of<AuthProvider>(context, listen: false)
+                      .logout()
+                      .then((logedout) {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (context) => const ScreenRouter()),
+                        (route) => false);
+                  });
+                },
                 child: const ListTile(
-                  title: Text("Contact Us"),
-                  trailing: Icon(Icons.headphones),
+                  title: Text("Logout"),
+                  trailing: Icon(Icons.exit_to_app),
                 ),
-              ),
+              )
             ],
           )),
         ),
@@ -68,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Center(
                       child: Text(
                     "Somthing went wrong!",
-                    style: TextStyle(fontSize: 20, color: primaryColor),
+                    style: TextStyle(fontSize: 20, color: seconderycolor),
                   )),
                 )
               : RefreshIndicator(
@@ -92,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Shimmer.fromColors(
                                       baseColor:
                                           seconderycolor.withOpacity(0.2),
-                                      highlightColor: base2.withOpacity(0),
+                                      highlightColor: base2.withOpacity(0.2),
                                       enabled: true,
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -109,23 +120,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 1 / 1.5,
+                            crossAxisCount: 1,
+                            childAspectRatio: 1 / 1.2,
                             mainAxisSpacing: 24,
                             crossAxisSpacing: 24),
                   ),
                 ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: primaryColor,
-          selectedItemColor: seconderycolor,
-          unselectedItemColor: base2,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Wallet'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
         ),
       );
     });

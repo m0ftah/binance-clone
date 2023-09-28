@@ -10,9 +10,9 @@ import '../services/api.dart';
 class CryptoProvider with ChangeNotifier {
   Api api = Api();
 
-  // List<CryptoCurrncyModel> movies = [];
-   CryptoCurrncyModel? currentcoin;
   List<CryptoCurrncyModel> coins = [];
+  // CryptoCurrncyModel? currentcoin;
+
   bool isLoading = true;
   bool isFailed = false;
 
@@ -48,19 +48,17 @@ class CryptoProvider with ChangeNotifier {
     setLoading(false);
   }
 
-  fetchDCoins(String coinrank) async {
-    setLoading(true);
-    final response =
-        await api.get('https://api.coincap.io/v2/assets/$coinrank');
+  // fetchDCoins(String symbol, String query) async {
+  //   setLoading(true);
+  //   final response = await api.get('https://api.coincap.io/v2/assets/');
 
-    if (response.statusCode == 200) {
-      currentcoin =
-          CryptoCurrncyModel.fromJson(jsonDecode(response.body));
-      setFailed(false);
-    } else {
-      setFailed(true);
-    }
+  //   if (response.statusCode == 200) {
+  //     currentcoin = CryptoCurrncyModel.fromJson(jsonDecode(response.body));
+  //     setFailed(false);
+  //   } else {
+  //     setFailed(true);
+  //   }
 
-    setLoading(false);
-  }
+  //   setLoading(false);
+  // }
 }

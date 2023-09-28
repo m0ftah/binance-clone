@@ -6,9 +6,11 @@ class InputField extends StatefulWidget {
       required this.controller,
       required this.hintText,
       required this.validator,
-      this.obSecure = false});
+      this.obSecure = false,
+      required this.textcolor});
 
   final TextEditingController controller;
+  final Color textcolor;
   final String hintText;
   final String? Function(String?)? validator;
   final bool obSecure;
@@ -24,6 +26,7 @@ class _InputFieldState extends State<InputField> {
         autovalidateMode: AutovalidateMode.onUserInteraction,
         controller: widget.controller,
         decoration: InputDecoration(
+            
             hintText: widget.hintText,
             hintStyle: const TextStyle(color: Colors.grey)),
         validator: widget.validator);
